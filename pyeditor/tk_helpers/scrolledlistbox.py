@@ -14,8 +14,8 @@ class ScrolledListbox(Listbox):
 
         # Copy geometry methods of self.frame without overriding Text
         # methods -- hack!
-        text_meths = vars(Listbox).keys()
-        methods = vars(Pack).keys() | vars(Grid).keys() | vars(Place).keys()
+        text_meths = list(vars(Listbox).keys())
+        methods = list(vars(Pack).keys()) | list(vars(Grid).keys()) | list(vars(Place).keys())
         methods = methods.difference(text_meths)
 
         for m in methods:

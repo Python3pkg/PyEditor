@@ -11,7 +11,7 @@ from setuptools import setup, find_packages
 
 
 if sys.version_info[0] < 3:
-    print("ERROR: Python 3 in needed. You use Python %s" % sys.version)
+    print(("ERROR: Python 3 in needed. You use Python %s" % sys.version))
     sys.exit(1)
 
 
@@ -52,7 +52,7 @@ if "publish" in sys.argv:
         #   error: invalid command 'bdist_wheel'
         import wheel
     except ImportError as err:
-        print("\nError: %s" % err)
+        print(("\nError: %s" % err))
         print("\nMaybe https://pypi.python.org/pypi/wheel is not installed or virtualenv not activated?!?")
         print("e.g.:")
         print("    ~/your/env/$ source bin/activate")
@@ -62,7 +62,7 @@ if "publish" in sys.argv:
     try:
         import twine
     except ImportError as err:
-        print("\nError: %s" % err)
+        print(("\nError: %s" % err))
         print("\nMaybe https://pypi.python.org/pypi/twine is not installed or virtualenv not activated?!?")
         print("e.g.:")
         print("    ~/your/env/$ source bin/activate")
@@ -79,22 +79,22 @@ if "publish" in sys.argv:
             output = subprocess.check_output(args, universal_newlines=True, stderr=subprocess.STDOUT)
         except subprocess.CalledProcessError as err:
             print("\n***ERROR:")
-            print(err.output)
+            print((err.output))
             raise
         return call_info, output
 
     def verbose_check_call(*args):
         """ 'verbose' version of subprocess.check_call() """
-        print("\tCall: %r\n" % " ".join(args))
+        print(("\tCall: %r\n" % " ".join(args)))
         subprocess.check_call(args, universal_newlines=True)
 
     if "dev" in __version__:
-        print("\nERROR: Version contains 'dev': v%s\n" % __version__)
+        print(("\nERROR: Version contains 'dev': v%s\n" % __version__))
         sys.exit(-1)
 
     print("\nCheck if we are on 'master' branch:")
     call_info, output = verbose_check_output("git", "branch", "--no-color")
-    print("\t%s" % call_info)
+    print(("\t%s" % call_info))
     if "* master" in output:
         print("OK")
     else:
@@ -106,7 +106,7 @@ if "publish" in sys.argv:
 
     print("\ncheck if if git repro is clean:")
     call_info, output = verbose_check_output("git", "status", "--porcelain")
-    print("\t%s" % call_info)
+    print(("\t%s" % call_info))
     if output == "":
         print("OK")
     else:
@@ -117,7 +117,7 @@ if "publish" in sys.argv:
     print("\ncheck if pull is needed")
     verbose_check_call("git", "fetch", "--all")
     call_info, output = verbose_check_output("git", "log", "HEAD..origin/master", "--oneline")
-    print("\t%s" % call_info)
+    print(("\t%s" % call_info))
     if output == "":
         print("OK")
     else:
@@ -130,7 +130,7 @@ if "publish" in sys.argv:
     def rmtree(path):
         path = os.path.abspath(path)
         if os.path.isdir(path):
-            print("\tremove tree:", path)
+            print(("\tremove tree:", path))
             shutil.rmtree(path)
     rmtree("./dist")
     rmtree("./build")
@@ -142,10 +142,10 @@ if "publish" in sys.argv:
             sys.executable or "python",
             "setup.py", "sdist", "bdist_wheel", "bdist_egg"
         )
-        print("\t%s" % call_info)
+        print(("\t%s" % call_info))
         log.write(call_info)
         log.write(output)
-    print("Build output is in log file: %r" % log_filename)
+    print(("Build output is in log file: %r" % log_filename))
 
     print("\ngit tag version (will raise a error of tag already exists)")
     verbose_check_call("git", "tag", "v%s" % __version__)
@@ -154,7 +154,7 @@ if "publish" in sys.argv:
     twine_args = sys.argv[1:]
     twine_args.remove("publish")
     twine_args.insert(1, "dist/*")
-    print("\ttwine upload command args: %r" % " ".join(twine_args))
+    print(("\ttwine upload command args: %r" % " ".join(twine_args)))
     from twine.commands.upload import main as twine_upload
     twine_upload(twine_args)
 

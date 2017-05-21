@@ -27,7 +27,7 @@ class ScriptList:
             self.file_list.insert(END, file_name)
 
     def click_handler(self, event):
-        print("Click:", event)
+        print(("Click:", event))
         widget = event.widget
         index = event.widget.nearest(event.y) # FIXME
         value = widget.get(index)

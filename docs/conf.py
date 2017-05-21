@@ -60,8 +60,8 @@ source_suffix = ['.rst', '.md']
 master_doc = 'index'
 
 # General information about the project.
-project = u'PyEditor'
-copyright = u"2017, Jens Diemer"
+project = 'PyEditor'
+copyright = "2017, Jens Diemer"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -214,8 +214,8 @@ latex_elements = {
 # [howto/manual]).
 latex_documents = [
     ('index', 'pyeditor.tex',
-     u'PyEditor Documentation',
-     u'Jens Diemer', 'manual'),
+     'PyEditor Documentation',
+     'Jens Diemer', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at
@@ -245,8 +245,8 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'pyeditor',
-     u'PyEditor Documentation',
-     [u'Jens Diemer'], 1)
+     'PyEditor Documentation',
+     ['Jens Diemer'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -260,8 +260,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'pyeditor',
-     u'PyEditor Documentation',
-     u'Jens Diemer',
+     'PyEditor Documentation',
+     'Jens Diemer',
      'pyeditor',
      'Python Editor for beginners and Minecraft Fans.',
      'Miscellaneous'),
